@@ -7,8 +7,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mdlayher/apcupsd"
-	apcupsdexporter "github.com/mdlayher/apcupsd_exporter"
+	"github.com/acaylor/apcupsd"
+	apcupsdexporter "github.com/acaylor/apcupsd_exporter"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

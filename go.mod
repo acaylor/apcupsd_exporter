@@ -3,7 +3,7 @@ module github.com/acaylor/apcupsd_exporter
 go 1.26
 
 require (
-	github.com/acaylor/apcupsd v0.1.0
+	github.com/acaylor/apcupsd v0.2.0
 	github.com/prometheus/client_golang v1.24.1
 )
 

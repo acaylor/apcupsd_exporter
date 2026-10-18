@@ -6,8 +6,11 @@ This project is a fork of [mdlayher/apcupsd_exporter](https://github.com/mdlayhe
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-10-18
+
 ### Changed
 
+- Upgrade `github.com/acaylor/apcupsd` to v0.2.0. Scrapes now fail instead of reporting zeroed metrics when the NIS response is truncated.
 - `Describe` now sends static metric descriptors without connecting to apcupsd, so registration no longer depends on NIS availability.
 - Pin staticcheck to v0.8.2 in CI instead of `@latest`.
 
@@ -43,6 +46,7 @@ This project is a fork of [mdlayher/apcupsd_exporter](https://github.com/mdlayhe
 
 - Replace deprecated `io/ioutil` with `io` in tests (staticcheck SA1019).
 
-[Unreleased]: https://github.com/acaylor/apcupsd_exporter/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/acaylor/apcupsd_exporter/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/acaylor/apcupsd_exporter/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/acaylor/apcupsd_exporter/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/acaylor/apcupsd_exporter/compare/28b7412...v0.1.0

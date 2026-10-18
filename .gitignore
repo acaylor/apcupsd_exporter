@@ -1,5 +1,5 @@
 # Binaries
-apcupsd_exporter
+/apcupsd_exporter
 *.exe
 *.exe~
 *.dll

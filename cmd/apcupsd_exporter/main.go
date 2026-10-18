@@ -5,6 +5,7 @@ import (
 	"context"
 	"flag"
 	"log"
+	"net"
 	"net/http"
 
 	"github.com/acaylor/apcupsd"
@@ -47,6 +48,20 @@ func main() {
 
 func newClient(network, addr string) apcupsdexporter.ClientFunc {
 	return func(ctx context.Context) (*apcupsd.Client, error) {
-		return apcupsd.DialContext(ctx, network, addr)
+		var d net.Dialer
+		conn, err := d.DialContext(ctx, network, addr)
+		if err != nil {
+			return nil, err
+		}
+
+		// Bound the whole status exchange, not just the dial.
+		if deadline, ok := ctx.Deadline(); ok {
+			if err := conn.SetDeadline(deadline); err != nil {
+				conn.Close()
+				return nil, err
+			}
+		}
+
+		return apcupsd.New(conn), nil
 	}
 }

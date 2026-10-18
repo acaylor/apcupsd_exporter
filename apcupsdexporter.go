@@ -45,14 +45,9 @@ func New(fn ClientFunc) *Exporter {
 }
 
 // Describe sends all the descriptors of the collectors included to
-// the provided channel.
+// the provided channel. Descriptors are static, so no connection is needed.
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
-	// Don't care, we'll get this error on Collect.
-	_ = e.withCollectors(func(cs []prometheus.Collector) {
-		for _, c := range cs {
-			c.Describe(ch)
-		}
-	})
+	NewUPSCollector(nil).Describe(ch)
 }
 
 // Collect sends the collected metrics from each of the collectors to
